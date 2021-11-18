@@ -16,3 +16,24 @@ img {
   display: block;
   max-width: 100%;
 }
+
+.krasota{
+  color: black;
+  margin-right: 50px;
+}
+
+.krasota:last-child{
+  margin-right: 0px;
+}
+
+.timer {
+  display: flex;
+}
+
+.sss {
+  color: red;
+}
+
+.aaa {
+  color: blue;
+}

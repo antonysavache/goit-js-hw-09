@@ -6,6 +6,14 @@ let btnMain = document.querySelector('[data-start]');
 btnMain.disabled = true;
 let timeDiff = 0;
 
+
+document.querySelectorAll('.field').forEach(element => {
+  element.classList.add('krasota')  
+});
+
+
+
+
 let time = {
   days: document.querySelector('[data-days]'),
   hours: document.querySelector('[data-hours]'),
@@ -13,9 +21,18 @@ let time = {
   seconds: document.querySelector('[data-seconds]'),
 };
 
+let timeBeauty = {
+  days: document.querySelector('.js-1'),
+  hours: document.querySelector('.js-2'),
+  minutes: document.querySelector('.js-3'),
+  seconds: document.querySelector('.js-4'),
+};
+
 function addLeadingZero(value) {
   value = value.toString(10);
-  value = value.padStart(2, '0');
+  if (value.length < 3){
+    value = value.padStart(2, '0');
+  }
   return value
 }
 
@@ -57,13 +74,23 @@ const options = {
     let selectedDate = selectedDates[0];
     let currentDate = new Date();
     if (currentDate.getTime() > selectedDate.getTime()) {
-      window.alert('выбрал прошлое');
+      window.alert('Please choose a date in the future');
     }
     btnMain.disabled = false;
     function difFunc(e) {
       currentDate = new Date();
       timeDiff = selectedDate.getTime() - currentDate.getTime();
       console.log(convertMs(timeDiff));
+
+
+      timeBeauty.days.classList.toggle('aaa')
+      timeBeauty.hours.classList.toggle('aaa')
+      timeBeauty.minutes.classList.toggle('aaa')
+      timeBeauty.seconds.classList.toggle('aaa')
+
+
+
+
     }
     function fStart(e) {
       setInterval(difFunc, 1000);
