@@ -79,9 +79,14 @@ const options = {
     btnMain.disabled = false;
     function difFunc(e) {
       currentDate = new Date();
-      timeDiff = selectedDate.getTime() - currentDate.getTime();
-      console.log(convertMs(timeDiff));
 
+      do {
+        timeDiff = selectedDate.getTime() - currentDate.getTime();
+        convertMs(timeDiff)
+      } while (selectedDate.getTime() < currentDate.getTime())
+
+      // console.log(convertMs(timeDiff));
+      // console.log(timeDiff.getTime())
 
       timeBeauty.days.classList.toggle('aaa')
       timeBeauty.hours.classList.toggle('aaa')
@@ -93,7 +98,14 @@ const options = {
 
     }
     function fStart(e) {
-      setInterval(difFunc, 1000);
+      let intId = setInterval(difFunc, 1000);
+      // if(!currentDate.getTime() > 0){
+
+      // }
+      // clearInterval(intId)
+
+
+
     }
     btnMain.addEventListener('click', fStart)
 console.log(typeof(time.hours.textContent))
