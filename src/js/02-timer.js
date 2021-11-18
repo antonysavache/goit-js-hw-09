@@ -6,13 +6,9 @@ let btnMain = document.querySelector('[data-start]');
 btnMain.disabled = true;
 let timeDiff = 0;
 
-
 document.querySelectorAll('.field').forEach(element => {
-  element.classList.add('krasota')  
+  element.classList.add('krasota');
 });
-
-
-
 
 let time = {
   days: document.querySelector('[data-days]'),
@@ -30,10 +26,10 @@ let timeBeauty = {
 
 function addLeadingZero(value) {
   value = value.toString(10);
-  if (value.length < 3){
+  if (value.length < 3) {
     value = value.padStart(2, '0');
   }
-  return value
+  return value;
 }
 
 function convertMs(ms) {
@@ -80,36 +76,24 @@ const options = {
     function difFunc(e) {
       currentDate = new Date();
 
-      do {
+      if (selectedDate.getTime() > currentDate.getTime()){
         timeDiff = selectedDate.getTime() - currentDate.getTime();
-        convertMs(timeDiff)
-      } while (selectedDate.getTime() < currentDate.getTime())
-
-      // console.log(convertMs(timeDiff));
-      // console.log(timeDiff.getTime())
-
-      timeBeauty.days.classList.toggle('aaa')
-      timeBeauty.hours.classList.toggle('aaa')
-      timeBeauty.minutes.classList.toggle('aaa')
-      timeBeauty.seconds.classList.toggle('aaa')
-
+        convertMs(timeDiff);
+        timeBeauty.days.classList.toggle('aaa');
+        timeBeauty.hours.classList.toggle('aaa');
+        timeBeauty.minutes.classList.toggle('aaa');
+        timeBeauty.seconds.classList.toggle('aaa');
+        return
+      }
 
 
 
     }
     function fStart(e) {
       let intId = setInterval(difFunc, 1000);
-      // if(!currentDate.getTime() > 0){
-
-      // }
-      // clearInterval(intId)
-
-
-
     }
-    btnMain.addEventListener('click', fStart)
-console.log(typeof(time.hours.textContent))
-    
+    btnMain.addEventListener('click', fStart);
+    console.log(typeof time.hours.textContent);
   },
 };
 
